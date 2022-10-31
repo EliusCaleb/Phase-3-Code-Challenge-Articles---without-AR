@@ -2,11 +2,12 @@ require_relative './article'
 
 
 class Author
-  
+   @@all = []
    attr_reader :name
   
   def initialize(name)
     @name = name
+    @@all << self
   end
 
   
@@ -23,7 +24,7 @@ class Author
 
   
   def add_article(magazine:, title:)
-    Article.new(magazine:magazine,title:title, self)
+    Article.new(magazine:magazine,title:title, author:self )
   end
   
   def topic_areas
